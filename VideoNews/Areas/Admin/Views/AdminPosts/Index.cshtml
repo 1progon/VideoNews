@@ -1,0 +1,28 @@
+@model IEnumerable<VideoNews.Models.Post.Post>
+
+@{ ViewData["meta_title"] = "Все видео новости"; }
+
+
+<a asp-area="Admin"
+   asp-controller="AdminPosts"
+   asp-action="Create">
+    Создать пост
+</a>
+<div class="d-flex flex-wrap">
+
+    @{
+        foreach (var post in Model)
+        {
+            <div class="p-2 col-2">
+                <partial name="Post/_AdminCardPartial" model="post"/>
+                <a class="btn btn-warning btn-sm"
+                   asp-area="Admin"
+                   asp-controller="AdminPosts"
+                   asp-action="Edit"
+                   asp-route-id="@post.Id">
+                    Редактировать
+                </a>
+            </div>
+        }
+    }
+</div>

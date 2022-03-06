@@ -1,0 +1,54 @@
+@model VideoNews.Models.Post.Post
+
+@{
+    ViewData["meta_title"] = Model.Name;
+}
+
+<div class="container mb-5">
+    <a class="btn btn-warning btn-sm mb-3"
+       asp-area="Admin"
+       asp-controller="AdminPosts"
+       asp-action="Edit"
+       asp-route-id="@Model.Id.ToString()">
+        Редактировать
+    </a>
+    <iframe class="col-12"
+            height="100%"
+            style="min-height: 550px"
+            src="@(Model.VideoUrl ?? "")"
+            title="@Model.Name"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
+
+
+    <div class="border p-3 mt-3">
+        <h2>@Model.Name</h2>
+
+        <div class="border-bottom"></div>
+
+        <div class="post-meta d-flex flex-wrap">
+            @{
+                if (Model.SubCategory != null && Model.SubCategory.Name != "")
+                {
+                    <div>
+                        Категория:
+                        <h3>@Model.SubCategory.Name</h3>
+                    </div>
+                }
+            }
+        </div>
+
+        <p class="lead">@Model.Description</p>
+
+        <div>
+            @Model.Article
+        </div>
+    </div>
+
+
+</div>
+<div>
+    <h4>Похожие новости</h4>
+    <vc:related-news/>
+</div>

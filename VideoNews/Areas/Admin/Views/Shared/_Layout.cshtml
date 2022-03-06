@@ -1,0 +1,36 @@
+﻿<!doctype html>
+<html lang="ru" class="h-100">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@($"{ViewData["meta_title"]} | ")Admin Видео новости</title>
+    <meta name="keywords" content="@ViewData["meta_keys"]">
+    <meta name="description" content="@ViewData["meta_desc"]">
+
+    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/style.css">
+
+    @RenderSection("Head", false)
+</head>
+<body class="d-flex flex-column h-100">
+<header>
+    <p class="alert alert-warning">Admin Area</p>
+    <partial name="_HeaderPartial"></partial>
+</header>
+<div class="d-flex flex-wrap">
+    <aside class="col-12 col-sm-2">
+        <partial name="_AdminHeaderPartial"/>
+    </aside>
+    <main class="col flex-shrink-0">@RenderBody()</main>
+</div>
+<footer class="footer mt-auto py-3 bg-light">
+    <partial name="_FooterPartial"></partial>
+</footer>
+
+
+<script src="~/js/bootstrap.bundle.min.js"></script>
+@RenderSection("Scripts", false)
+
+</body>
+</html>

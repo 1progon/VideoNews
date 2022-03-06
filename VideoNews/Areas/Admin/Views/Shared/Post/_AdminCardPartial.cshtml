@@ -1,0 +1,43 @@
+﻿@using VideoNews.Models.Enum
+@model VideoNews.Models.Post.Post
+
+@{
+    if (string.IsNullOrWhiteSpace(Model.Image))
+    {
+        switch (Model.VideoType)
+        {
+            case VideoType.YouTube:
+                Model.Image = $"https://img.youtube.com/vi/{Model.VideoId}/0.jpg";
+                break;
+            case VideoType.Vk:
+                break;
+            case VideoType.None:
+                break;
+            case VideoType.Oklassniki:
+                break;
+            case VideoType.RuTube:
+                break;
+            case VideoType.YandexVideo:
+                break;
+        }
+    }
+}
+
+<div class="card p-2 rounded-0 border-0">
+    <img src="@Model.Image"
+         alt="картинка фото для видео-новости @Model.Name">
+
+
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <a
+            asp-area="Admin"
+            asp-controller="AdminPosts"
+            asp-action="Details"
+            asp-route-id="@Model.Id.ToString()"
+            class="btn btn-primary">
+            Открыть новость
+        </a>
+    </div>
+</div>

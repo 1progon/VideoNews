@@ -1,0 +1,17 @@
+﻿@using VideoNews.Models.Enum
+@model List<VideoNews.Models.Post.Post>
+@{
+    ViewData["meta_title"] = "Главная страница";
+}
+
+<h2>Последние новости</h2>
+<div class="d-flex flex-wrap">
+    @{
+        foreach (var post in Model)
+        {
+            <div class="p-2 col-2">
+                <partial name="Post/_CardPartial" model="post"/>
+            </div>
+        }
+    }
+</div>

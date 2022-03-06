@@ -1,0 +1,13 @@
+﻿@using VideoNews.Models.Enum
+@model List<VideoNews.Models.Post.Post>
+
+<div class="related-news d-flex flex-wrap">
+    @{
+        foreach (var post in Model)
+        {
+            <div class="p-2 col-2">
+                <partial name="Post/_CardPartial" model="post"/>
+            </div>
+        }
+    }
+</div>

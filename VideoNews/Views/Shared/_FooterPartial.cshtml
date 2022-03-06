@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using VideoNews.Models.User
+<div class="container d-flex flex-wrap">
+    <span class="col text-muted">
+        <a href="/">Видео новости</a>
+        2010 - @DateTime.Now.Year.ToString()
+    </span>
+    <div class="col">
+        @{
+            if (User.Identity is {IsAuthenticated: true })
+            {
+                <a class="btn btn-outline-success"
+                   asp-area="Admin"
+                   asp-controller="AdminPosts"
+                   asp-action="Index">
+                    Посты админ
+                </a>
+
+                <a class="btn btn-danger"
+                   asp-area="Identity"
+                   asp-page="/Account/Logout">
+                    Выйти
+                </a>
+            }
+            else
+            {
+                <a class="btn btn-outline-success"
+                   asp-area="Identity"
+                   asp-page="/Account/Login">
+                    Вход
+                </a>
+
+                @*<a class="btn btn-primary"
+                   asp-area="Identity"
+                   asp-page="/Account/Register">
+                    Регистрация
+                </a>*@
+            }
+        }
+    </div>
+</div>
